@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8">
+		<meta name = 'description' content = 'This is the homepage for the Semi-RESTful Products app.'>
+		<title>All Products</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	</head>
+	<body>
+		<h2>Products</h2>
+		<table class = 'table table-bordered table-striped'>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+				<tr>
+					<td>{{product['name']}}</td>
+					<td>{{product['description']}}</td>
+					<td>${{product['price']}}</td>
+					<td>
+						<a href = "/products/show/{{product['id']}}">Show</a>
+						| <a href = "/products/edit/{{product['id']}}">Edit</a>
+						| <a href = "/products/delete/{{product['id']}}" class = 'btn btn-default'>Remove</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href = "/products/new">Add a new product</a>
+	</body>
+</html>
